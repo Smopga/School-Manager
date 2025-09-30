@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Manager</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>📚 School Manager v1.0</h1>
+
+    <!-- Login -->
+    <div id="login-screen">
+      <h2>Login</h2>
+      <button onclick="login('student')">Als Schüler einloggen</button>
+      <button onclick="showTeacherLogin()">Als Lehrer einloggen</button>
+      <div id="teacher-login" style="display:none;">
+        <input type="password" id="teacher-password" placeholder="Lehrer Passwort">
+        <button onclick="login('teacher')">Login</button>
+      </div>
+    </div>
+
+    <!-- Hauptansicht -->
+    <div id="main-screen" style="display:none;">
+      <h2 id="role-display"></h2>
+      <button onclick="logout()">Logout</button>
+
+      <!-- Schüler -->
+      <div id="student-panel" style="display:none;">
+        <h3>Nachrichten</h3>
+        <div id="student-chat"></div>
+        <input id="student-msg" placeholder="Antwort schreiben...">
+        <button onclick="sendStudentMsg()">Senden</button>
+        <hr>
+        <button onclick="raiseHand()">✋ Hand heben</button>
+      </div>
+
+      <!-- Lehrer -->
+      <div id="teacher-panel" style="display:none;">
+        <h3>Lehrer-Dashboard</h3>
+        <p>Schüler mit gehobener Hand:</p>
+        <ul id="raised-hands"></ul>
+        <hr>
+        <h3>Nachricht an Schüler</h3>
+        <input id="student-id" placeholder="Schüler-ID">
+        <input id="teacher-msg" placeholder="Nachricht">
+        <button onclick="sendTeacherMsg()">Senden</button>
+        <div id="teacher-chat"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
